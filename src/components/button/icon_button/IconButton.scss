@@ -1,0 +1,10 @@
+@import 'styles/_colors.scss';
+
+.iconbutton {
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  color: $alt-dark-gray;
+  font-size: 14px;
+}
