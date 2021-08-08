@@ -5,6 +5,7 @@ import {
 } from '../../../utils/shared/formater'
 import { BaseButton } from '../../button/base_button/BaseButton'
 import { RoundedProfile } from '../../image/rounded_profile/RoundedProfile'
+import { CollapsibleComments } from '../comments/CollapsibleComments'
 import { PostPanel } from '../post_panel/PostPanel'
 import './UserPostCard.scss'
 
@@ -21,8 +22,21 @@ export const UserPostCard = (userPostCard: UserPostCardProps) => {
   const [userComment, setUserComment] = useState('')
   const [postCommentCollapsed, setPostCommentCollapsed] = useState(true)
 
+  const showPostCommentForm = () => {
+    setCommentListCollapsed(true)
+    setPostCommentCollapsed(false)
+  }
+
   const onPostContent = () => {
+    setCommentListCollapsed(true)
     setPostCommentCollapsed(true)
+  }
+
+  const [commentListCollapsed, setCommentListCollapsed] = useState(true)
+
+  const showCommentList = () => {
+    setPostCommentCollapsed(true)
+    setCommentListCollapsed(!commentListCollapsed)
   }
 
   return (
@@ -69,6 +83,7 @@ export const UserPostCard = (userPostCard: UserPostCardProps) => {
               label={FormatTextReaction(totalComments, 'comentario')}
               color="main"
               fontWeight="bold"
+              onClick={() => showCommentList()}
             />
           )}
         </div>
@@ -87,7 +102,7 @@ export const UserPostCard = (userPostCard: UserPostCardProps) => {
             label="Comentar"
             color={totalComments > 1 ? 'main' : 'alt-dark-gray'}
             fontWeight="bold"
-            onClick={() => setPostCommentCollapsed(false)}
+            onClick={() => showPostCommentForm()}
           />
         </div>
       </div>
@@ -100,6 +115,13 @@ export const UserPostCard = (userPostCard: UserPostCardProps) => {
           onChange={(evt) => setUserComment(evt.target.value)}
           collapsed={postCommentCollapsed}
           onPost={() => onPostContent()}
+        />
+      </div>
+
+      <div className="comment-list-container">
+        <CollapsibleComments
+          collapsed={commentListCollapsed}
+          collapsedHeight={0}
         />
       </div>
     </div>

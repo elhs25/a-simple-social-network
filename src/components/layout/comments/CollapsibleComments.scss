@@ -1,0 +1,11 @@
+@import 'styles/_colors.scss';
+
+.collapsible-comments {
+  overflow: hidden;
+  transition: height 0.2s ease-out;
+  height: 0;
+
+  &--expanded {
+    height: auto;
+  }
+}

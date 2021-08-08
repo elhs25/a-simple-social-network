@@ -12,19 +12,6 @@ export const FormatPostCreationDate = (
     currentDate,
   )
 
-  console.log(
-    'minutes',
-    minutes,
-    'hours',
-    hours,
-    'days',
-    days,
-    'weeks',
-    weeks,
-    'months',
-    months,
-  )
-
   if (minutes < 1) {
     return 'Justo Ahora'
   } else if (minutes < 60) {
