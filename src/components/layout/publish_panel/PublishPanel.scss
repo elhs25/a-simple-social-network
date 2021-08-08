@@ -1,0 +1,42 @@
+@import 'styles/_colors.scss';
+
+.publish-panel {
+  border-radius: 15px;
+  background: $white;
+  box-shadow: 0px 8px 16px $box-shadow;
+
+  overflow: hidden;
+  transition: height 0.2s ease-out;
+  height: 77px;
+
+  &--expanded {
+    height: 125px;
+  }
+
+  &--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+
+    input {
+      width: 100%;
+      border-radius: 15px;
+      padding: 10px 20px;
+      border: 1px solid $background;
+      outline-width: 0;
+
+      &:focus {
+        border: 1px solid $main;
+      }
+
+      ::placeholder {
+        color: $dark-gray;
+        opacity: 1;
+      }
+    }
+  }
+}

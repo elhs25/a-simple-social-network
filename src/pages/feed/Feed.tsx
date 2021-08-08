@@ -1,7 +1,11 @@
+import { Container } from '../../components/layout/container/Container'
+import { PublishPanel } from '../../components/layout/publish_panel/PublishPanel'
+
 export default function Feed() {
   return (
-    <div>
-      <h1>Feed</h1>
+    <Container>
+      <PublishPanel value="" />
+
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
@@ -78,6 +82,6 @@ export default function Feed() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </p>
-    </div>
+    </Container>
   )
 }

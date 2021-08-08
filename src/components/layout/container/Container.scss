@@ -1,0 +1,14 @@
+.content-wrapper {
+  position: inherit;
+  margin: 0 20%;
+  &__container {
+    padding: 15px;
+  }
+}
+
+// On screens with 767 pixels or less of width, we remove the margin
+@media screen and (max-width: 767px) {
+  .content-wrapper {
+    margin: 0;
+  }
+}
