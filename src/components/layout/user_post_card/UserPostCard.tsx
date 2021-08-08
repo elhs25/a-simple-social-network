@@ -11,12 +11,12 @@ import './UserPostCard.scss'
 
 export const UserPostCard = (userPostCard: UserPostCardProps) => {
   const {
-    totalComments = 0,
     postOwner,
     createdAt,
     postContent,
     profilePhoto,
     likeReactions = [],
+    comments = [],
   } = userPostCard
 
   const [userComment, setUserComment] = useState('')
@@ -77,10 +77,10 @@ export const UserPostCard = (userPostCard: UserPostCardProps) => {
                 : FormatTextReaction(likeReactions.length, 'like')}
             </label>
           </div>
-          {totalComments > 0 && (
+          {comments.length > 0 && (
             <BaseButton
               withBackground={false}
-              label={FormatTextReaction(totalComments, 'comentario')}
+              label={FormatTextReaction(comments.length, 'comentario')}
               color="main"
               fontWeight="bold"
               onClick={() => showCommentList()}
@@ -100,7 +100,7 @@ export const UserPostCard = (userPostCard: UserPostCardProps) => {
           <BaseButton
             withBackground={false}
             label="Comentar"
-            color={totalComments > 1 ? 'main' : 'alt-dark-gray'}
+            color={comments.length > 1 ? 'main' : 'alt-dark-gray'}
             fontWeight="bold"
             onClick={() => showPostCommentForm()}
           />

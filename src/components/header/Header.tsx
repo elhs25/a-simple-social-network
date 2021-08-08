@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { withUserProvider } from '../../hooks/providers/UserProvider'
 import { IconButton } from '../button/icon_button/IconButton'
 import { SideBar } from '../layout/sidebar/SideBar'
 import './Header.scss'
 
-export const Header = () => {
+const Header = (props: any) => {
   const [sidebarVisible, setSidebarVisible] = useState(false)
+  const { user }: { user: User } = props
 
   return (
     <>
@@ -20,11 +22,13 @@ export const Header = () => {
       </header>
       {sidebarVisible && (
         <SideBar
-          profilePhoto="https://rickandmortyapi.com/api/character/avatar/4.jpeg"
-          username="Beth Smith"
+          profilePhoto={user.profilePhoto}
+          username={user.name}
           onClick={() => setSidebarVisible(false)}
         />
       )}
     </>
   )
 }
+
+export default withUserProvider(Header)

@@ -36,9 +36,11 @@ export const PostPanel = (postPanelProps: PostPanelProps) => {
   }, [collapsed, collapsedHeight])
 
   const onClickPost = () => {
-    // post the content
-    if (onPost) {
-      onPost()
+    if (value && value.trim().length > 0) {
+      // post the content
+      if (onPost) {
+        onPost()
+      }
     }
   }
 

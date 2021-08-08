@@ -1,11 +1,12 @@
 interface UserPostCardProps {
+  postId?: number
   totalComments?: number
-  totalLikes?: number
   postOwner: string
   createdAt: string
   postContent: string
   profilePhoto: string
   likeReactions: string[]
+  comments: Comment[]
 }
 
 interface userReactions {
