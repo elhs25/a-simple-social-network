@@ -5,7 +5,7 @@ interface UserPublishPanelProps {
   createdAt: string
   postContent: string
   profilePhoto: string
-  featuredProfileReactions: string[]
+  likeReactions: string[]
 }
 
 interface userReactions {

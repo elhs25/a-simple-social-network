@@ -12,15 +12,6 @@ function App() {
     <>
       <Header />
       <PageRoutes />
-      {/* <Router>
-        <Switch>
-          <Route exact path="/">
-            <Feed />
-          </Route>
-          <Route path="/about"></Route>
-          <Route path="/dashboard"></Route>
-        </Switch>
-      </Router> */}
     </>
   )
 }

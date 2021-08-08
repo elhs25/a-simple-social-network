@@ -69,4 +69,8 @@
   .reaction-buttons {
     @extend .reactions-and-comments__reactions-section;
   }
+
+  .no-likes {
+    color: $alt-dark-gray;
+  }
 }

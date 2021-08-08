@@ -1,8 +1,11 @@
+@import 'styles/_colors.scss';
+
 .rounded-profile {
   overflow: hidden;
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  border: 1px solid $white;
 
   img {
     width: 100%;

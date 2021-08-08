@@ -10,14 +10,14 @@ export default function Feed() {
 
   const posts = [
     {
-      totalComments: 0,
+      totalComments: 1,
       totalLikes: 0,
       postOwner: 'Beth Smith',
       createdAt: '2021-08-07 00:00:00',
       postContent:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
-      featuredProfileReactions: [],
+      likeReactions: [],
     },
     {
       totalComments: 0,
@@ -27,7 +27,7 @@ export default function Feed() {
       postContent:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-      featuredProfileReactions: [],
+      likeReactions: [],
     },
     {
       totalComments: 0,
@@ -37,7 +37,7 @@ export default function Feed() {
       postContent:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-      featuredProfileReactions: [],
+      likeReactions: [],
     },
     {
       totalComments: 0,
@@ -47,7 +47,22 @@ export default function Feed() {
       postContent:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/5.jpeg',
-      featuredProfileReactions: [],
+      likeReactions: [],
+    },
+    {
+      totalComments: 0,
+      totalLikes: 4,
+      postOwner: 'Summer Smith',
+      createdAt: '2021-08-07 22:43:20',
+      postContent:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
+      likeReactions: [
+        'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
+        'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
+        'https://rickandmortyapi.com/api/character/avatar/5.jpeg',
+        'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+      ],
     },
   ]
 

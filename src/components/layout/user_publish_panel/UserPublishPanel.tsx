@@ -9,12 +9,11 @@ import './UserPublishPanel.scss'
 export const UserPublishPanel = (userPublishPanel: UserPublishPanelProps) => {
   const {
     totalComments = 0,
-    totalLikes = 0,
     postOwner,
     createdAt,
     postContent,
     profilePhoto,
-    featuredProfileReactions = [],
+    likeReactions = [],
   } = userPublishPanel
 
   return (
@@ -37,7 +36,7 @@ export const UserPublishPanel = (userPublishPanel: UserPublishPanelProps) => {
       <div className="reactions-and-comments">
         <div className="reactions-and-comments__reactions-section">
           <div className="reactions-and-comments__reactions-section__profiles">
-            {featuredProfileReactions.map((featuredProfile, index) => (
+            {likeReactions.slice(0, 3).map((featuredProfile, index) => (
               <RoundedProfile
                 key={`featured_reaction_${index}`}
                 src={featuredProfile}
@@ -46,12 +45,19 @@ export const UserPublishPanel = (userPublishPanel: UserPublishPanelProps) => {
               />
             ))}
           </div>
-          <label>{FormatTextReaction(totalLikes, 'like')}</label>
+          <label className={`${likeReactions.length === 0 ? 'no-likes' : ''}`}>
+            {likeReactions.length === 0
+              ? 'Sin likes aún'
+              : FormatTextReaction(likeReactions.length, 'like')}
+          </label>
         </div>
         {totalComments > 0 && (
-          <div>
-            <label>{FormatTextReaction(totalComments, 'comentario')}</label>
-          </div>
+          <BaseButton
+            withBackground={false}
+            label={FormatTextReaction(totalComments, 'comentario')}
+            color="main"
+            fontWeight="bold"
+          />
         )}
       </div>
 
@@ -67,7 +73,7 @@ export const UserPublishPanel = (userPublishPanel: UserPublishPanelProps) => {
         <BaseButton
           withBackground={false}
           label="Comentar"
-          color="alt-dark-gray"
+          color={totalComments > 1 ? 'main' : 'alt-dark-gray'}
           fontWeight="bold"
         />
       </div>
