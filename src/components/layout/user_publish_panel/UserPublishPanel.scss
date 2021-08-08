@@ -1,0 +1,72 @@
+@import 'styles/colors.scss';
+
+.user-publish-panel-wrapper {
+  padding: 20px;
+  color: $alt-dark-gray;
+  background: $white;
+  border-radius: 15px;
+  max-height: 300px;
+  box-shadow: 0px 8px 16px $box-shadow;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  hr {
+    border: 1px solid $background;
+    margin: 5px 0;
+  }
+
+  .publish-content {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+
+    div {
+      RoundedProfile {
+        flex: 0.2;
+      }
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 0.7rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      color: $main;
+    }
+    h6 {
+      font-size: 0.5rem;
+    }
+  }
+
+  .reactions-and-comments {
+    @extend .publish-content;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: $main;
+    font-weight: bold;
+    padding: 0 10px;
+
+    &__reactions-section {
+      @extend .reactions-and-comments;
+      padding: 0;
+
+      &__profiles {
+        @extend .reactions-and-comments__reactions-section;
+        gap: 0;
+        div.rounded-profile:nth-child(n) {
+          margin: -3px;
+        }
+      }
+    }
+  }
+
+  .reaction-buttons {
+    @extend .reactions-and-comments__reactions-section;
+  }
+}

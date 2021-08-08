@@ -3,20 +3,22 @@ import './BaseButton.scss'
 export const BaseButton = (baseButtonProps: BaseButtonProps) => {
   const {
     label,
+    disabled,
     withBackground = true,
+    color = 'white',
+    fontWeight = 'normal',
     backgroundColor = 'main',
-    onClick = () => {},
+    onClick,
   } = baseButtonProps
 
   return (
     <button
-      style={{
-        backgroundColor: !withBackground ? 'unset' : '',
-      }}
-      className={`base-button ${backgroundColor}`}
+      style={{ backgroundColor: !withBackground ? 'unset' : '', fontWeight }}
+      disabled={disabled}
+      className={`base-button ${backgroundColor} ${color}-font `}
       onClick={onClick}
     >
-      <label htmlFor="button">{label}</label>
+      <span>{label}</span>
     </button>
   )
 }

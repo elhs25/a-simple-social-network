@@ -10,8 +10,9 @@ export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
   const {
     placeholder = 'Escribe Aquí tu estado',
     value,
+    maxLength = 255,
     onPublish = () => {},
-    onChange = () => {},
+    onChange,
   } = publishPanelProps
 
   const publishPanelRef: any = useRef(null)
@@ -19,17 +20,20 @@ export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
   const [collapsedHeight, setCollapsedHeight] = useState(0)
 
   useEffect(() => {
+    // store the initial height (collapsed height) of the component
     setCollapsedHeight(publishPanelRef.current?.clientHeight)
   }, [])
 
   const onFocusInput = () => {
+    handleCollapsedStatus(false)
+  }
+
+  const handleCollapsedStatus = (collapsed: boolean) => {
     if (!publishPanelRef.current) return
-
-    collapsed && expandSection(publishPanelRef.current as HTMLElement)
-    !collapsed &&
+    !collapsed && expandSection(publishPanelRef.current as HTMLElement)
+    collapsed &&
       collapseSection(publishPanelRef.current as HTMLElement, collapsedHeight)
-
-    setCollapsed(!collapsed)
+    setCollapsed(collapsed)
   }
 
   const onClickPublish = () => {
@@ -37,6 +41,7 @@ export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
     onPublish()
 
     // then collapse the panel...
+    handleCollapsedStatus(true)
   }
 
   return (
@@ -45,14 +50,20 @@ export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
       ref={publishPanelRef}
     >
       <div className="publish-panel--container">
-        <input
-          type="text"
-          placeholder={placeholder}
-          value={value}
-          onFocus={onFocusInput}
-          onChange={onChange}
-        />
-        <BaseButton label="Publicar" onClick={onClickPublish()} />
+        <div className="input-container">
+          <input
+            type="text"
+            placeholder={placeholder}
+            value={value}
+            maxLength={maxLength}
+            onFocus={() => onFocusInput()}
+            onChange={onChange}
+          />
+          {!collapsed && maxLength && (
+            <label>{`${value.length}/${maxLength}`}</label>
+          )}
+        </div>
+        <BaseButton label="Publicar" onClick={() => onClickPublish()} />
       </div>
     </div>
   )

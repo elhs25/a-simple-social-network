@@ -1,13 +1,13 @@
 @import 'styles/_colors.scss';
 @import 'styles/_buttons.scss';
+@import 'styles/_fonts.scss';
 
 .base-button {
   border: none;
   font-size: 0.8rem;
   font-family: unset;
-  color: $white;
   width: 100px;
-  padding: 5px 15px;
+  padding: 5px 10px;
   border-radius: 3px;
   cursor: pointer;
 }
