@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { withPostProvider } from '../../../hooks/providers/PostProvider'
+import { withUserProvider } from '../../../hooks/providers/UserProvider'
+import { getCommentsAsCommentCardProps } from '../../../utils/shared/feed.helper'
 import {
   FormatPostCreationDate,
   FormatTextReaction,
@@ -9,27 +12,46 @@ import { CollapsibleComments } from '../comments/CollapsibleComments'
 import { PostPanel } from '../post_panel/PostPanel'
 import './UserPostCard.scss'
 
-export const UserPostCard = (userPostCard: UserPostCardProps) => {
+const UserPostCard = (props: any) => {
   const {
+    postId,
     postOwner,
     createdAt,
     postContent,
     profilePhoto,
     likeReactions = [],
     comments = [],
-  } = userPostCard
+  } = props as UserPostCardProps // Component props
+
+  const {
+    user,
+    addCommentToPost,
+    addReactionToPost,
+  }: { user: User; addCommentToPost: any; addReactionToPost: any } = props // Reducer props
 
   const [userComment, setUserComment] = useState('')
   const [postCommentCollapsed, setPostCommentCollapsed] = useState(true)
 
+  const [uIPostComments, setUIPostComments] = useState([] as CommentCardProps[])
+  useEffect(() => {
+    setUIPostComments(getCommentsAsCommentCardProps(comments))
+  }, [comments.length])
+
   const showPostCommentForm = () => {
     setCommentListCollapsed(true)
-    setPostCommentCollapsed(false)
+    setPostCommentCollapsed(!postCommentCollapsed)
   }
 
   const onPostContent = () => {
     setCommentListCollapsed(true)
     setPostCommentCollapsed(true)
+
+    addCommentToPost(user.id, userComment, postId)
+    setUserComment('')
+  }
+
+  const onReactToPost = (reaction: UserReaction) => {
+    addReactionToPost(user.id, postId, reaction)
   }
 
   const [commentListCollapsed, setCommentListCollapsed] = useState(true)
@@ -122,8 +144,11 @@ export const UserPostCard = (userPostCard: UserPostCardProps) => {
         <CollapsibleComments
           collapsed={commentListCollapsed}
           collapsedHeight={0}
+          comments={uIPostComments}
         />
       </div>
     </div>
   )
 }
+
+export default withUserProvider(withPostProvider(UserPostCard))

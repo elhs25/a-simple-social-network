@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Container } from '../../components/layout/container/Container'
 import { PostPanel } from '../../components/layout/post_panel/PostPanel'
-import { UserPostCard } from '../../components/layout/user_post_card/UserPostCard'
+import UserPostCard from '../../components/layout/user_post_card/UserPostCard'
 import { withPostProvider } from '../../hooks/providers/PostProvider'
 import { withUserProvider } from '../../hooks/providers/UserProvider'
 import { getPostAsPostCardProps } from '../../utils/shared/feed.helper'

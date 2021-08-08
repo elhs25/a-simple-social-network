@@ -6,41 +6,10 @@ import {
 import './CollapsibleComments.scss'
 import { CommentCard } from './CommentCard'
 
-const comments = [
-  {
-    profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    commentOwner: 'Morty Smith',
-    createdAt: '2021-08-01 11:00:00',
-    comment:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
-  {
-    profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    commentOwner: 'Morty Smith',
-    createdAt: '2021-08-01 11:00:00',
-    comment:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
-  {
-    profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    commentOwner: 'Morty Smith',
-    createdAt: '2021-08-01 11:00:00',
-    comment:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
-  {
-    profilePhoto: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    commentOwner: 'Morty Smith',
-    createdAt: '2021-08-01 11:00:00',
-    comment:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
-]
-
 export const CollapsibleComments = (
   collapsibleCommentsProps: CollapsibleCommentsProps,
 ) => {
-  const { collapsed, collapsedHeight } = collapsibleCommentsProps
+  const { collapsed, collapsedHeight, comments } = collapsibleCommentsProps
 
   const collapsibleCommentsPanelRef: any = useRef(null)
   const prevCollapsedStatus = useRef(true)

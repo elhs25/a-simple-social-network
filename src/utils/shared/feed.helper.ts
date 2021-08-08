@@ -17,6 +17,7 @@ export const getPostAsPostCardProps = (currPosts: Post[]) => {
 
     if (user) {
       posts.push({
+        postId: post.id,
         createdAt: post.createdAt,
         postContent: post.content,
         postOwner: user.name,
@@ -30,4 +31,18 @@ export const getPostAsPostCardProps = (currPosts: Post[]) => {
   return posts
 }
 
-export const reactToPost = (posts: UserPostCardProps[]) => {}
+export const getCommentsAsCommentCardProps = (currComments: Comment[]) => {
+  const comments: CommentCardProps[] = []
+
+  currComments.forEach((comment) => {
+    const user = users.find((user) => user.id === comment.userId)
+    comments.push({
+      comment: comment.comment,
+      commentOwner: user?.name,
+      profilePhoto: user?.profilePhoto,
+      createdAt: comment.createdAt,
+    } as CommentCardProps)
+  })
+
+  return comments
+}

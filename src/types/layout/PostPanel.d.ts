@@ -13,7 +13,9 @@ interface PostPanelProps extends CollapsibleBaseProps {
   onFocusInput?: React.FocusEventHandler<HTMLInputElement>
 }
 
-interface CollapsibleCommentsProps extends CollapsibleBaseProps {}
+interface CollapsibleCommentsProps extends CollapsibleBaseProps {
+  comments: CommentCardProps[]
+}
 
 interface CommentCardProps {
   commentOwner: string

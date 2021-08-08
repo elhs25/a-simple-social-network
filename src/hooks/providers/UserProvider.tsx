@@ -19,7 +19,7 @@ export default function UserProvider({ children }: any) {
   )
 
   useEffect(() => {
-    const selectedUser = Math.ceil(Math.random() * (users.length - 1))
+    const selectedUser = Math.round(Math.random() * (users.length - 1))
     setUser(users[selectedUser])
   }, [])
 

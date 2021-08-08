@@ -34,7 +34,7 @@ export function withPostProvider(Component: any) {
     const savePostsInStorage = (posts: Post[]) =>
       localStorage.setItem('posts', JSON.stringify(posts))
 
-    const generateId = (): number => new Date().getUTCMilliseconds()
+    const generateId = (): number => Date.now()
 
     const addPost = (userId: number, content: string) => {
       const newPosts = [
@@ -58,13 +58,21 @@ export function withPostProvider(Component: any) {
       const _posts = [...posts]
       const selectedPostIndex = _posts.findIndex((post) => post.id === postId)
       if (selectedPostIndex >= 0) {
-        _posts[selectedPostIndex].comments.push({
+        const newPost = {
           id: generateId(),
           postId,
           userId,
           comment,
           createdAt: new Date().toISOString(),
-        } as Comment)
+        } as Comment
+        if (!_posts[selectedPostIndex].comments) {
+          _posts[selectedPostIndex] = {
+            ..._posts[selectedPostIndex],
+            comments: [newPost],
+          }
+        } else {
+          _posts[selectedPostIndex].comments.unshift(newPost)
+        }
       }
       setPosts([..._posts])
       savePostsInStorage(_posts)
@@ -79,22 +87,36 @@ export function withPostProvider(Component: any) {
       const _posts = [...posts]
       const selectedPostIndex = _posts.findIndex((post) => post.id === postId)
       if (selectedPostIndex >= 0) {
-        const previousUserReactionIndex = _posts[
-          selectedPostIndex
-        ].reactions.findIndex((reaction) => reaction.userId === userId)
-        if (previousUserReactionIndex === -1) {
-          _posts[selectedPostIndex].reactions.push({
-            id: generateId(),
-            postId,
-            userId,
-            [reaction]: true,
-          } as Reaction)
+        if (!_posts[selectedPostIndex].reactions) {
+          _posts[selectedPostIndex] = {
+            ..._posts[selectedPostIndex],
+            reactions: [
+              {
+                id: generateId(),
+                postId,
+                userId,
+                [reaction]: true,
+              } as Reaction,
+            ],
+          }
         } else {
-          const _reaction =
-            _posts[selectedPostIndex].reactions[previousUserReactionIndex]
-          _posts[selectedPostIndex].reactions[previousUserReactionIndex] = {
-            ..._reaction,
-            [reaction]: !_reaction[reaction],
+          const previousUserReactionIndex = _posts[
+            selectedPostIndex
+          ].reactions.findIndex((reaction) => reaction.userId === userId)
+          if (previousUserReactionIndex === -1) {
+            _posts[selectedPostIndex].reactions.push({
+              id: generateId(),
+              postId,
+              userId,
+              [reaction]: true,
+            } as Reaction)
+          } else {
+            const _reaction =
+              _posts[selectedPostIndex].reactions[previousUserReactionIndex]
+            _posts[selectedPostIndex].reactions[previousUserReactionIndex] = {
+              ..._reaction,
+              [reaction]: !_reaction[reaction],
+            }
           }
         }
       }
