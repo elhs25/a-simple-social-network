@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Container } from '../../components/layout/container/Container'
-import { PublishPanel } from '../../components/layout/publish_panel/PublishPanel'
-import { UserPublishPanel } from '../../components/layout/user_publish_panel/UserPublishPanel'
+import { PostPanel } from '../../components/layout/post_panel/PostPanel'
+import { UserPostCard } from '../../components/layout/user_post_card/UserPostCard'
 
 import './Feed.scss'
 
 export default function Feed() {
-  const [publishText, setPublishText] = useState('')
+  const [publishText, setPostText] = useState('')
 
   const posts = [
     {
@@ -69,13 +69,13 @@ export default function Feed() {
   return (
     <Container>
       <div className="feed-content">
-        <PublishPanel
+        <PostPanel
           value={publishText}
-          onChange={(evt) => setPublishText(evt.target.value)}
+          onChange={(evt) => setPostText(evt.target.value)}
         />
 
         {posts.map((post, index) => (
-          <UserPublishPanel key={`post_${index}`} {...post} />
+          <UserPostCard key={`post_${index}`} {...post} />
         ))}
       </div>
     </Container>

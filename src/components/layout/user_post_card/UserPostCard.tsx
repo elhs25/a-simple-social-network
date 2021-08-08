@@ -4,9 +4,9 @@ import {
 } from '../../../utils/shared/formater'
 import { BaseButton } from '../../button/base_button/BaseButton'
 import { RoundedProfile } from '../../image/rounded_profile/RoundedProfile'
-import './UserPublishPanel.scss'
+import './UserPostCard.scss'
 
-export const UserPublishPanel = (userPublishPanel: UserPublishPanelProps) => {
+export const UserPostCard = (userPostCard: UserPostCardProps) => {
   const {
     totalComments = 0,
     postOwner,
@@ -14,11 +14,11 @@ export const UserPublishPanel = (userPublishPanel: UserPublishPanelProps) => {
     postContent,
     profilePhoto,
     likeReactions = [],
-  } = userPublishPanel
+  } = userPostCard
 
   return (
-    <div className="user-publish-panel-wrapper">
-      <div className="publish-content">
+    <div className="user-post-panel-wrapper">
+      <div className="post-content">
         <div>
           <RoundedProfile
             src={profilePhoto}
@@ -26,7 +26,7 @@ export const UserPublishPanel = (userPublishPanel: UserPublishPanelProps) => {
             size="small"
           />
         </div>
-        <div className="publish-content-text">
+        <div className="post-content-text">
           <h2>{postOwner}</h2>
           <h6>{FormatPostCreationDate(createdAt)}</h6>
           <p>{postContent}</p>

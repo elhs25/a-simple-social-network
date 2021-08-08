@@ -1,7 +1,7 @@
-interface PublishPanelProps {
+interface PostPanelProps {
   value: string
   maxLength?: number | undefined
   placeholder?: string
-  onPublish?: void
+  onPost?: void
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
 }

@@ -1,6 +1,6 @@
 @import 'styles/colors.scss';
 
-.user-publish-panel-wrapper {
+.user-post-panel-wrapper {
   padding: 20px;
   color: $alt-dark-gray;
   background: $white;
@@ -16,7 +16,7 @@
     margin: 5px 0;
   }
 
-  .publish-content {
+  .post-content {
     display: flex;
     flex-flow: row nowrap;
     gap: 10px;
@@ -44,7 +44,7 @@
   }
 
   .reactions-and-comments {
-    @extend .publish-content;
+    @extend .post-content;
     align-items: center;
     justify-content: space-between;
     font-size: 0.7rem;

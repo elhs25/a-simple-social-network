@@ -4,24 +4,24 @@ import {
   expandSection,
 } from '../../../utils/shared/layoutHelper'
 import { BaseButton } from '../../button/base_button/BaseButton'
-import './PublishPanel.scss'
+import './PostPanel.scss'
 
-export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
+export const PostPanel = (postPanelProps: PostPanelProps) => {
   const {
     placeholder = 'Escribe Aquí tu estado',
     value,
     maxLength = 255,
-    onPublish = () => {},
+    onPost = () => {},
     onChange,
-  } = publishPanelProps
+  } = postPanelProps
 
-  const publishPanelRef: any = useRef(null)
+  const postPanelRef: any = useRef(null)
   const [collapsed, setCollapsed] = useState(true)
   const [collapsedHeight, setCollapsedHeight] = useState(0)
 
   useEffect(() => {
     // store the initial height (collapsed height) of the component
-    setCollapsedHeight(publishPanelRef.current?.clientHeight)
+    setCollapsedHeight(postPanelRef.current?.clientHeight)
   }, [])
 
   const onFocusInput = () => {
@@ -29,16 +29,16 @@ export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
   }
 
   const handleCollapsedStatus = (collapsed: boolean) => {
-    if (!publishPanelRef.current) return
-    !collapsed && expandSection(publishPanelRef.current as HTMLElement)
+    if (!postPanelRef.current) return
+    !collapsed && expandSection(postPanelRef.current as HTMLElement)
     collapsed &&
-      collapseSection(publishPanelRef.current as HTMLElement, collapsedHeight)
+      collapseSection(postPanelRef.current as HTMLElement, collapsedHeight)
     setCollapsed(collapsed)
   }
 
-  const onClickPublish = () => {
-    // publish the content
-    onPublish()
+  const onClickPost = () => {
+    // post the content
+    onPost()
 
     // then collapse the panel...
     handleCollapsedStatus(true)
@@ -46,10 +46,10 @@ export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
 
   return (
     <div
-      className={`publish-panel ${collapsed ? '' : 'publish-panel--expanded'}`}
-      ref={publishPanelRef}
+      className={`post-panel ${collapsed ? '' : 'post-panel--expanded'}`}
+      ref={postPanelRef}
     >
-      <div className="publish-panel--container">
+      <div className="post-panel--container">
         <div className="input-container">
           <input
             type="text"
@@ -63,7 +63,7 @@ export const PublishPanel = (publishPanelProps: PublishPanelProps) => {
             <label>{`${value.length}/${maxLength}`}</label>
           )}
         </div>
-        <BaseButton label="Publicar" onClick={() => onClickPublish()} />
+        <BaseButton label="Publicar" onClick={() => onClickPost()} />
       </div>
     </div>
   )

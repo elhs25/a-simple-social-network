@@ -1,4 +1,4 @@
-interface UserPublishPanelProps {
+interface UserPostCardProps {
   totalComments?: number
   totalLikes?: number
   postOwner: string
