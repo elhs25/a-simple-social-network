@@ -3,7 +3,7 @@
 .post-panel {
   overflow: hidden;
   transition: height 0.2s ease-out;
-  height: 77px;
+  height: 0;
 
   &--expanded {
     height: 140px;

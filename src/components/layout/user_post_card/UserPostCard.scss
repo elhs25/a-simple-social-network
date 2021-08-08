@@ -1,76 +1,93 @@
 @import 'styles/colors.scss';
 
 .user-post-panel-wrapper {
-  padding: 20px;
-  color: $alt-dark-gray;
-  background: $white;
-  border-radius: 15px;
-  max-height: 300px;
-  box-shadow: 0px 8px 16px $box-shadow;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  position: relative;
 
-  hr {
-    border: 1px solid $background;
-    margin: 5px 0;
-  }
-
-  .post-content {
+  &__container {
+    padding: 20px;
+    color: $alt-dark-gray;
+    background: $white;
+    border-radius: 15px;
+    max-height: 300px;
+    box-shadow: 0px 8px 16px $box-shadow;
     display: flex;
-    flex-flow: row nowrap;
+    flex-direction: column;
     gap: 10px;
+    position: relative;
+    z-index: 2;
 
-    div {
-      RoundedProfile {
-        flex: 0.2;
+    hr {
+      border: 1px solid $background;
+      margin: 5px 0;
+    }
+
+    .post-content {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 10px;
+
+      div {
+        RoundedProfile {
+          flex: 0.2;
+        }
+      }
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 0.7rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+        color: $main;
+      }
+      h6 {
+        font-size: 0.5rem;
       }
     }
 
-    &-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .reactions-and-comments {
+      @extend .post-content;
+      align-items: center;
+      justify-content: space-between;
       font-size: 0.7rem;
-    }
-
-    h2 {
-      font-size: 1rem;
       color: $main;
-    }
-    h6 {
-      font-size: 0.5rem;
-    }
-  }
+      font-weight: bold;
+      padding: 0 10px;
 
-  .reactions-and-comments {
-    @extend .post-content;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.7rem;
-    color: $main;
-    font-weight: bold;
-    padding: 0 10px;
+      &__reactions-section {
+        @extend .reactions-and-comments;
+        padding: 0;
 
-    &__reactions-section {
-      @extend .reactions-and-comments;
-      padding: 0;
-
-      &__profiles {
-        @extend .reactions-and-comments__reactions-section;
-        gap: 0;
-        div.rounded-profile:nth-child(n) {
-          margin: -3px;
+        &__profiles {
+          @extend .reactions-and-comments__reactions-section;
+          gap: 0;
+          div.rounded-profile:nth-child(n) {
+            margin: -3px;
+          }
         }
       }
     }
+
+    .reaction-buttons {
+      @extend .reactions-and-comments__reactions-section;
+    }
+
+    .no-likes {
+      color: $alt-dark-gray;
+    }
   }
 
-  .reaction-buttons {
-    @extend .reactions-and-comments__reactions-section;
-  }
+  .add-comment-container {
+    position: relative;
+    z-index: 1;
 
-  .no-likes {
-    color: $alt-dark-gray;
+    padding-top: 10px;
+    margin-top: -10px;
+    border-radius: 0 0 16px 16px;
+    background: $background;
+    box-shadow: 0px 8px 16px $box-shadow;
   }
 }

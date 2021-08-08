@@ -44,6 +44,7 @@ export const PostPanel = (postPanelProps: PostPanelProps) => {
 
   return (
     <div
+      style={{ minHeight: collapsedHeight }}
       className={`post-panel ${collapsed ? '' : 'post-panel--expanded'}`}
       ref={postPanelRef}
     >
