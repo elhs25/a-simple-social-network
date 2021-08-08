@@ -1,0 +1,14 @@
+@import 'styles/_colors.scss';
+
+.sidebar-content {
+  height: 100%;
+  width: 200px;
+  background: $white;
+  position: fixed;
+  z-index: 100;
+  overflow: auto;
+
+  IconButton {
+    color: $alt-dark-gray;
+  }
+}
