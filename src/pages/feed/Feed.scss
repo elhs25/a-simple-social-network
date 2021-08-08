@@ -1,5 +1,13 @@
+@import 'styles/_colors.scss';
+
 .feed-content {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  .create-post-container {
+    border-radius: 15px;
+    background: $white;
+    box-shadow: 0px 8px 16px $box-shadow;
+  }
 }

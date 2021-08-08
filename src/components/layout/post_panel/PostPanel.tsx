@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   collapseSection,
   expandSection,
@@ -11,37 +11,35 @@ export const PostPanel = (postPanelProps: PostPanelProps) => {
     placeholder = 'Escribe Aquí tu estado',
     value,
     maxLength = 255,
-    onPost = () => {},
+    onPost,
     onChange,
+
+    collapsed = true,
+    collapsedHeight = 77,
+    onFocusInput,
   } = postPanelProps
 
   const postPanelRef: any = useRef(null)
-  const [collapsed, setCollapsed] = useState(true)
-  const [collapsedHeight, setCollapsedHeight] = useState(0)
+  const prevCollapsedStatus = useRef(true)
 
   useEffect(() => {
-    // store the initial height (collapsed height) of the component
-    setCollapsedHeight(postPanelRef.current?.clientHeight)
-  }, [])
-
-  const onFocusInput = () => {
-    handleCollapsedStatus(false)
-  }
-
-  const handleCollapsedStatus = (collapsed: boolean) => {
-    if (!postPanelRef.current) return
-    !collapsed && expandSection(postPanelRef.current as HTMLElement)
-    collapsed &&
-      collapseSection(postPanelRef.current as HTMLElement, collapsedHeight)
-    setCollapsed(collapsed)
-  }
+    const handleCollapsedStatus = (collapsed: boolean) => {
+      if (!postPanelRef.current) return
+      if (prevCollapsedStatus.current !== collapsed) {
+        !collapsed && expandSection(postPanelRef.current as HTMLElement)
+        collapsed &&
+          collapseSection(postPanelRef.current as HTMLElement, collapsedHeight)
+        prevCollapsedStatus.current = collapsed
+      }
+    }
+    handleCollapsedStatus(collapsed)
+  }, [collapsed, collapsedHeight])
 
   const onClickPost = () => {
     // post the content
-    onPost()
-
-    // then collapse the panel...
-    handleCollapsedStatus(true)
+    if (onPost) {
+      onPost()
+    }
   }
 
   return (
@@ -56,7 +54,7 @@ export const PostPanel = (postPanelProps: PostPanelProps) => {
             placeholder={placeholder}
             value={value}
             maxLength={maxLength}
-            onFocus={() => onFocusInput()}
+            onFocus={onFocusInput}
             onChange={onChange}
           />
           {!collapsed && maxLength && (

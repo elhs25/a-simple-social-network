@@ -6,7 +6,7 @@ import { UserPostCard } from '../../components/layout/user_post_card/UserPostCar
 import './Feed.scss'
 
 export default function Feed() {
-  const [publishText, setPostText] = useState('')
+  const [postText, setPostText] = useState('')
 
   const posts = [
     {
@@ -66,13 +66,26 @@ export default function Feed() {
     },
   ]
 
+  const [createPostCollapsed, setCreatePostCollapsed] = useState(true)
+
+  const onFocusCreatePostInput = () => setCreatePostCollapsed(false)
+
+  const onPostContent = () => {
+    setCreatePostCollapsed(true)
+  }
+
   return (
     <Container>
       <div className="feed-content">
-        <PostPanel
-          value={publishText}
-          onChange={(evt) => setPostText(evt.target.value)}
-        />
+        <div className="create-post-container">
+          <PostPanel
+            value={postText}
+            onChange={(evt) => setPostText(evt.target.value)}
+            collapsed={createPostCollapsed}
+            onFocusInput={() => onFocusCreatePostInput()}
+            onPost={() => onPostContent()}
+          />
+        </div>
 
         {posts.map((post, index) => (
           <UserPostCard key={`post_${index}`} {...post} />

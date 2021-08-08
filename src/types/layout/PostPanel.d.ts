@@ -1,7 +1,11 @@
 interface PostPanelProps {
   value: string
-  maxLength?: number | undefined
+  maxLength?: number
   placeholder?: string
-  onPost?: void
-  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
+  onPost?: () => void
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
+
+  collapsed: boolean
+  collapsedHeight?: number
+  onFocusInput?: React.FocusEventHandler<HTMLInputElement>
 }
