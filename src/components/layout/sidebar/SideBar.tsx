@@ -9,13 +9,15 @@ export const SideBar = ({
 }) => {
   return (
     <div className="sidebar-content">
-      <IconButton icon="times" size="2x" onClick={() => onClick()} />
+      <div className="close-button">
+        <IconButton icon="times" size="2x" onClick={() => onClick()} />
+      </div>
       <RoundedProfile
         src={profilePhoto}
         alt="profile_photo_sidebar"
         size="large"
       />
-      <label>{username}</label>
+      <label>Hola {username}</label>
     </div>
   )
 }

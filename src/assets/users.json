@@ -23,5 +23,40 @@
         "id": 5,
         "name": "Jerry Smith",
         "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+    },
+    {
+        "id": 30,
+        "name": "Sr. Pantalones de Popó",
+        "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/30.jpeg"
+    },
+    {
+        "id": 40,
+        "name": "Beth Monstruo",
+        "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/40.jpeg"
+    },
+    {
+        "id": 87,
+        "name": "Cynthia",
+        "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/87.jpeg"
+    },
+    {
+        "id": 162,
+        "name": "Ice-T",
+        "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/162.jpeg"
+    },
+    {
+        "id": 305,
+        "name": "Scary Glenn",
+        "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/305.jpeg"
+    },
+    {
+        "id": 126,
+        "name": "Fleeb",
+        "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/126.jpeg"
+    },
+    {
+        "id": 230,
+        "name": "Morty Jr",
+        "profilePhoto": "https://rickandmortyapi.com/api/character/avatar/230.jpeg"
     }
 ]
