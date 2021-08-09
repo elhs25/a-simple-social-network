@@ -10,6 +10,7 @@ import { BaseButton } from '../../button/base_button/BaseButton'
 import { RoundedProfile } from '../../image/rounded_profile/RoundedProfile'
 import { CollapsibleComments } from '../comments/CollapsibleComments'
 import { PostPanel } from '../post_panel/PostPanel'
+import { ReactionCard } from '../reaction_card/ReactionCard'
 import './UserPostCard.scss'
 
 const UserPostCard = (props: any) => {
@@ -50,6 +51,7 @@ const UserPostCard = (props: any) => {
     setUserComment('')
   }
 
+  const [reactionCardVisible, setReactionCardVisible] = useState(false)
   const onReactToPost = (reaction: UserReaction) => {
     addReactionToPost(user.id, postId, reaction)
   }
@@ -113,12 +115,20 @@ const UserPostCard = (props: any) => {
         <hr />
 
         <div className="reaction-buttons">
-          <BaseButton
-            withBackground={false}
-            label="Reaccionar"
-            color="alt-dark-gray"
-            fontWeight="bold"
-          />
+          <div className="reaction-buttons--container">
+            <ReactionCard
+              visible={reactionCardVisible}
+              onReact={onReactToPost}
+              onClickOutside={() => setReactionCardVisible(false)}
+            />
+            <BaseButton
+              withBackground={false}
+              label="Reaccionar"
+              color="alt-dark-gray"
+              fontWeight="bold"
+              onClick={() => setReactionCardVisible(!reactionCardVisible)}
+            />
+          </div>
           <BaseButton
             withBackground={false}
             label="Comentar"

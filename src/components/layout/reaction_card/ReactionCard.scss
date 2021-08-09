@@ -1,0 +1,41 @@
+@import 'styles/_colors.scss';
+@import 'styles/_fonts.scss';
+
+.reaction-card-wrapper {
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__container {
+    position: absolute;
+    top: -30px;
+    margin: 0 0 0 -20%;
+    background: $background;
+    border-radius: 16px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+
+    .iconbutton {
+      transform: scale(1);
+      transition: all 0.15s ease-in-out;
+      &:hover {
+        transform: scale(1.5);
+      }
+    }
+  }
+  &__reaction {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    background: $white;
+    padding: 5px 15px;
+    text-align: center;
+  }
+}

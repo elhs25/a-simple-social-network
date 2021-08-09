@@ -9,14 +9,8 @@ interface UserPostCardProps {
   comments: Comment[]
 }
 
-interface userReactions {
-  profilePhoto: string
-  comments?: string[]
-  like?: number
-  haha?: number
-  love?: number
-  sad?: number
-  amazes?: number
-  frowning_face?: number
-  flushed_face?: number
+interface ReactionCardProps {
+  visible: boolean
+  onReact?: (reaction: UserReaction) => void
+  onClickOutside: () => void
 }

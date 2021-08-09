@@ -75,6 +75,9 @@
 
     .reaction-buttons {
       @extend .reactions-and-comments__reactions-section;
+      &--container {
+        position: relative;
+      }
     }
 
     .no-likes {
