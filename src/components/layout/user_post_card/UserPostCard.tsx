@@ -36,6 +36,7 @@ const UserPostCard = (props: any) => {
   const [uIPostComments, setUIPostComments] = useState([] as CommentCardProps[])
   useEffect(() => {
     setUIPostComments(getCommentsAsCommentCardProps(comments))
+    // eslint-disable-next-line
   }, [comments.length])
 
   const showPostCommentForm = () => {

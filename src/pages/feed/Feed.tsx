@@ -14,7 +14,6 @@ function Feed(props: any) {
     posts,
     addPost,
   }: { user: User; posts: Post[]; addPost: any } = props
-  console.log('posts', props)
 
   const [postText, setPostText] = useState('')
 
