@@ -1,4 +1,5 @@
 interface BaseButtonProps {
+  role?: string
   label: string
   color?: 'white' | 'main' | 'alt-dark-gray' | undefined
   fontWeight?: number | 'normal' | 'bold' | 'bolder' | 'lighter' | undefined

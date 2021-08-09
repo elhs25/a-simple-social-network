@@ -1,4 +1,5 @@
 interface UserPostCardProps {
+  role?: string
   postId?: number
   totalComments?: number
   postOwner: string

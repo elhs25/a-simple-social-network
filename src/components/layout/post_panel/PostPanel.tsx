@@ -8,6 +8,7 @@ import './PostPanel.scss'
 
 export const PostPanel = (postPanelProps: PostPanelProps) => {
   const {
+    role,
     placeholder = 'Escribe Aquí tu estado',
     value,
     maxLength = 255,
@@ -46,6 +47,7 @@ export const PostPanel = (postPanelProps: PostPanelProps) => {
 
   return (
     <div
+      role={role}
       style={{ minHeight: collapsedHeight }}
       className={`post-panel ${collapsed ? '' : 'post-panel--expanded'}`}
       ref={postPanelRef}
@@ -64,7 +66,11 @@ export const PostPanel = (postPanelProps: PostPanelProps) => {
             <label>{`${value.length}/${maxLength}`}</label>
           )}
         </div>
-        <BaseButton label="Publicar" onClick={() => onClickPost()} />
+        <BaseButton
+          role="post_button"
+          label="Publicar"
+          onClick={() => onClickPost()}
+        />
       </div>
     </div>
   )

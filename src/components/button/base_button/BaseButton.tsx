@@ -2,6 +2,7 @@ import './BaseButton.scss'
 
 export const BaseButton = (baseButtonProps: BaseButtonProps) => {
   const {
+    role,
     label,
     disabled,
     withBackground = true,
@@ -13,6 +14,7 @@ export const BaseButton = (baseButtonProps: BaseButtonProps) => {
 
   return (
     <button
+      role={role}
       style={{ backgroundColor: !withBackground ? 'unset' : '', fontWeight }}
       disabled={disabled}
       className={`base-button ${backgroundColor} ${color}-font `}

@@ -15,6 +15,7 @@ import './UserPostCard.scss'
 
 const UserPostCard = (props: any) => {
   const {
+    role,
     postId,
     postOwner,
     createdAt,
@@ -65,7 +66,7 @@ const UserPostCard = (props: any) => {
   }
 
   return (
-    <div className="user-post-panel-wrapper">
+    <div className="user-post-panel-wrapper" role={role}>
       <div className="user-post-panel-wrapper__container">
         <div className="post-content">
           <div>

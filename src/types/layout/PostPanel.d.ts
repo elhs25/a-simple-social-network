@@ -4,6 +4,7 @@ interface CollapsibleBaseProps {
 }
 
 interface PostPanelProps extends CollapsibleBaseProps {
+  role?: string
   value: string
   maxLength?: number
   placeholder?: string

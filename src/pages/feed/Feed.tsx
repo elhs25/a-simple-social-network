@@ -38,6 +38,7 @@ function Feed(props: any) {
       <div className="feed-content">
         <div className="create-post-container">
           <PostPanel
+            role="post_panel"
             value={postText}
             onChange={(evt) => setPostText(evt.target.value)}
             collapsed={createPostCollapsed}
@@ -47,7 +48,11 @@ function Feed(props: any) {
         </div>
 
         {uIPosts.map((post, index) => (
-          <UserPostCard key={`post_${index}`} {...post} />
+          <UserPostCard
+            key={`post_${index}`}
+            role={`post_${index}`}
+            {...post}
+          />
         ))}
       </div>
     </Container>
